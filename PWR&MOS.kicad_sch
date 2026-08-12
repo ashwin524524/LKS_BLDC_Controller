@@ -1269,6 +1269,12 @@
 		(uuid "4d739c5f-6710-4fed-966e-f4b6b45b1a2b")
 	)
 	(junction
+		(at 100.33 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b18c068-903f-448b-ac57-984578637cc6")
+	)
+	(junction
 		(at 161.29 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1352,12 +1358,6 @@
 		(color 0 0 0 0)
 		(uuid "d0f3c82f-f713-4ee5-b385-8521ae9402db")
 	)
-	(junction
-		(at 100.33 138.43)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e6bc2efe-c5a5-4d78-96b3-a7ac75096f3d")
-	)
 	(wire
 		(pts
 			(xy 181.61 138.43) (xy 187.96 138.43)
@@ -1420,7 +1420,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 138.43) (xy 100.33 140.97)
+			(xy 100.33 138.43) (xy 100.33 151.13)
 		)
 		(stroke
 			(width 0)
@@ -3408,7 +3408,7 @@
 	)
 	(symbol
 		(lib_id "power:-BATT")
-		(at 100.33 140.97 180)
+		(at 100.33 151.13 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3419,7 +3419,7 @@
 		(fields_autoplaced yes)
 		(uuid "445c1ab1-2255-4b96-9faf-df6e884deefc")
 		(property "Reference" "#PWR06"
-			(at 100.33 137.16 0)
+			(at 100.33 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3430,7 +3430,7 @@
 			)
 		)
 		(property "Value" "-BATT"
-			(at 100.33 146.05 0)
+			(at 100.33 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3440,7 +3440,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 140.97 0)
+			(at 100.33 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3451,7 +3451,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 140.97 0)
+			(at 100.33 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3462,7 +3462,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"-BATT\""
-			(at 100.33 140.97 0)
+			(at 100.33 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

@@ -2323,7 +2323,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_Elec_8x10.2"
+		(property "Footprint" "Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm"
 			(at 141.9352 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -2949,7 +2949,7 @@
 				)
 			)
 		)
-		(property "Value" "47uH"
+		(property "Value" "100uH"
 			(at 125.73 57.15 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2959,7 +2959,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_7.3x7.3_H4.5"
+		(property "Footprint" "Vesc_footprints:100uH inductor 5x5mm"
 			(at 125.73 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -3041,7 +3041,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_Elec_8x10.2"
+		(property "Footprint" "Capacitor_THT:C_Radial_D6.3mm_H11.0mm_P2.50mm"
 			(at 73.3552 55.88 0)
 			(hide yes)
 			(show_name no)
