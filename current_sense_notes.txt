@@ -1,0 +1,60 @@
+MCU and current sense update, 2026-10-25
+
+U3 is now project-local Custom:LKS32MC034SF6Q8 (LCSC C19193083).
+The QFN thermal pad is numbered 0 in the manufacturer drawing and 41 in
+KiCad's standard QFN-40 footprint. The symbol now uses 41. All ground pins
+7, 13, 17 and 41, AVDD bypass C6 return, and connector J1 pins 4/5 connect
+to battery negative. AVDD remains the internal 5 V output, not G_VDD.
+Pin electrical types now distinguish GPIO, power, gate outputs, sense inputs
+and NC pins. Unused MCU pins have explicit no-connect markers.
+Power flags represent the buck output, battery return and the three
+bootstrap supplies charged through internal diodes. They do not add hardware.
+
+R16/R17: Milliohm HoJLR2512-3W-1mR-1%, C2903470, 1 mOhm, 1%, 3 W, 2512.
+At instantaneous 40 A: Vshunt = 40 mV; Pshunt = 1.6 W while conducting.
+The 3 W nominal rating requires appropriate copper and temperature derating;
+it does not establish the ESC's continuous or peak current rating.
+
+R18/R19 (OPA0) and R20/R21 (OPA1): UNI-ROYAL 0603WAF1000T5E,
+C22775, 100 Ohm, 1%, 0603. Keep each pair matched in value and routing.
+C10/C11: YAGEO CC0603KRNPO9BN102, C3909020, 1 nF, 50 V, C0G, 10%, 0603.
+Each capacitor connects across amplifier IP and IN, after the series
+resistors, next to U3. Approximate external differential filter corner:
+1/(2*pi*(100+100)*1nF) = 796 kHz; tau = 200 ns, 1% settling ~0.92 us.
+This is an external RC estimate, not total PGA/ADC settling time.
+
+LKS32MC03x 6N datasheet, printed page 46 (PDF page 47), section 11:
+100 Ohm input resistors recommended for resistor-shunt sampling;
+a capacitor >=15 pF is required across each amplifier input pair.
+Gain = R2/(R1+R0), using internal feedback resistors, so the external
+100 Ohm resistors must be included in firmware scale calculations.
+No external current-sense amplifier, bias reference or feedback network
+is needed for the selected internal differential PGA topology.
+Enable the bandgap before the PGAs, select the correct input mux,
+choose gain for the actual silicon revision and required current range,
+and calibrate zero offsets and gain before closed-loop testing.
+Use PWM-synchronous sampling in valid two-shunt conduction windows;
+third phase current is reconstructed. Initial tests should use conservative
+current limits and independently verified hardware overcurrent shutdown.
+
+Routing: take a separate Kelvin trace from EACH shunt terminal to its
+input resistor; do not use a distant ground-plane pickup for IN. Keep
+sense pairs away from phase nodes and gates. Join quiet MCU/analog return
+to the low-impedance shunt/battery return without routing MOSFET switching
+current through the MCU ground area. Connect all MCU grounds/thermal pad
+with short local copper and vias; a shared net name alone is not routing.
+
+PCB synchronized for MCU ground nets, shunt footprints and resistor values.
+C10/C11 staged below the board at (135,136)/(141,136) for deliberate placement
+near U3 before routing. Fifteen segments terminating in the former shunt
+pad areas were removed to avoid retaining routing to obsolete pad geometry.
+Remaining routing must be completed and checked. The subsequent ERC/library
+cleanup resolved the connector NC, phase labels, library references, dangling
+wire endpoints and battery power declaration. ERC now has 0 errors/0 warnings.
+
+Sources:
+https://atta.szlcsc.com/upload/public/pdf/source/20221020/6287CA62AED952FCAC8F703A555C9560.pdf
+https://www.lcsc.com/product-detail/C19193083.html
+https://www.lcsc.com/product-detail/C2903470.html
+https://www.lcsc.com/product-detail/C22775.html
+https://www.lcsc.com/product-detail/C3909020.html

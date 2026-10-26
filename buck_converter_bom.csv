@@ -1,0 +1,11 @@
+Reference,Quantity,Value,Manufacturer,MPN,LCSC,Footprint,URL
+U2,1,U3212,UNI-SEMIC,U3212,C2874740,Custom_footprints:U3212_SOP-7_3.9x4.9mm_P1.27mm,https://www.lcsc.com/product-detail/C2874740.html
+D2,1,SS310,Slkor,SS310,C513470,Diode_SMD:D_SMA,https://www.lcsc.com/product-detail/C513470.html
+D3,1,M7,BORN,M7,C266550,Diode_SMD:D_SMA,https://www.lcsc.com/product-detail/C266550.html
+C7,1,10uF 100V,AISHI,ERS1KM100E11OT,C106677,Capacitor_THT:C_Radial_D6.3mm_H11.0mm_P2.50mm,https://www.lcsc.com/product-detail/C106677.html
+C8,1,1uF 50V X7R,CCTC,TCC0805X7R105M500FT,C376929,Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,https://www.lcsc.com/product-detail/C376929.html
+C9,1,470uF 25V,KNSCHA,01EC1227SHC470UF25V,C503221,Custom_footprints:C_Radial_D8.0mm_H12.0mm_P3.50mm,https://www.lcsc.com/product-detail/C503221.html
+R13,1,0.5R 1% 0.5W,UNI-ROYAL,HP06W2F500LT5E,C2759131,Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder,https://www.lcsc.com/product-detail/C2759131.html
+L1,1,100uH 1.5A Isat2A,XR,XR0650-101M,C5358146,Custom_footprints:L_XR_XR0650,https://www.lcsc.com/product-detail/C5358146.html
+D1,1,Green LED,EVERLIGHT,19-217/GHC-YR1S2/3T,C72043,LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder,https://www.lcsc.com/product-detail/C72043.html
+R22,1,4.7k 1%,UNI-ROYAL,0603WAF4701T5E,C23162,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,https://www.lcsc.com/product-detail/C23162.html

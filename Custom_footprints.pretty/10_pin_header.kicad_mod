@@ -1,13 +1,13 @@
 (footprint "10_pin_header"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "34f9b02e-70cf-479c-8d3d-38b9ffd2a477")
+		(uuid "6c60bec7-e541-4120-b425-201e9374e2cb")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "84184b38-7ddf-40f9-9db9-19c7cde8ca3b")
+		(uuid "2d909e67-678c-4662-b7c8-2eb1b352f3cf")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e587f6a5-8302-4d9c-9057-abe445df39b9")
+		(uuid "1d603d9d-9ddb-4726-a3e5-21f126c636b0")
 		(effects
 			(font
 				(size 1 1)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "51879031-68ef-4b20-b839-820dc47794c1")
+		(uuid "53bfbf81-261d-47b2-ba54-de695c3b6a0f")
 		(effects
 			(font
 				(size 1 1)
@@ -54,6 +54,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -1.38 -1.38)
 		(end 0 -1.38)

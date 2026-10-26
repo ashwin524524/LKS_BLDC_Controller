@@ -1,0 +1,66 @@
+U3212 auxiliary supply revision — 2026-10-24
+
+Design intent
+12 V auxiliary supply for the MCU and gate drivers, with a provisional 150 mA
+load budget. This is not a validated 1.5 A supply. Verify startup, ripple, load
+steps, component temperatures, and short-circuit recovery across the intended
+battery range before applying full motor power. The whole ESC still has other
+schematic issues identified in the review; this change does not resolve them.
+
+Circuit
+U2 is UNI-SEMIC U3212, C2874740. Pins: 1 VDD, 2 switching reference,
+3 FB intentionally open (12 V mode), 4 CS, 5/6 input drain, 8 NC.
+Physical lead 7 is absent. No exposed pad.
+R13 is 0.5 ohm, 1%, 0.5 W, 1206. Typical 0.55 V CS threshold gives
+~1.1 A peak inductor current; 0.50–0.60 V threshold and resistance tolerance
+give approximately 0.99–1.21 A before propagation-delay overshoot.
+This is a peak current limit, not an available DC output-current rating.
+L1 is XR0650-101M: 100 uH +/-20%, 1.5 A thermal rating, 2 A saturation,
+595 milliohm DCR. This provides headroom above the selected normal peak limit.
+The datasheet minimum off-time limits power at low load/inductance; verify
+actual output capability at minimum and maximum input voltage.
+C8 is 1 uF, 50 V, X7R between U2 VDD and switching reference.
+D3 is M7 with cathode at U2 VDD and anode at the 12 V output.
+D2 is SS310, 100 V / 3 A, cathode at switching node, anode at battery return.
+C7 is polarized 10 uF / 100 V, 6.3 x 11 mm, 2.5 mm lead spacing.
+C9 is polarized 470 uF / 25 V, 8 x 12 mm, 3.5 mm lead spacing.
+D1 is a green LED with 4.7 kohm R22 (~2 mA indication current).
+FB and NC are explicitly marked unconnected. A power flag documents the
+internally started VDD supply for ERC.
+Board GND is explicitly joined to -BATT at the supply return. U2 pin 2
+must remain on the switching node, not on this board-ground connection.
+
+Libraries and footprints
+Custom:U3212 is stored in Custom.kicad_sym and registered in sym-lib-table.
+U3212 footprint derives from KiCad SOIC-8 3.9x4.9mm / 1.27mm geometry,
+with lead 7 removed, pin 8 retained as NC, and no exposed pad.
+XR0650 footprint follows the manufacturer's drawing: 3.7mm inner land gap,
+8.4mm outer span, 3.5mm land height; two 2.35 x 3.5mm pads at +/-3.025mm.
+C9 footprint matches the selected 12mm height; footprint has no 3D model.
+All ten components have Manufacturer, MPN, and LCSC fields in the schematic
+and purchasing metadata on the board. buck_converter_bom.csv contains links.
+
+PCB status
+Five footprints changed: U2, R13, L1, D2, C9. Original component centers and
+orientations were retained as provisional placement. The larger components
+need placement review. Removed 51 obsolete buck trace/via objects: private
+buck nets and old connections to changed pads. Other routing was preserved;
+board GND copper assignments were merged into -BATT to match the schematic.
+The board is incomplete and must be rerouted and checked before fabrication.
+
+Sources
+U3212 manufacturer datasheet V2.2, reference circuit p2 and package p9:
+https://www.hestore.hu/prod_getfile.php?id=15870
+XR0650-101M manufacturer drawing and electrical characteristics:
+https://www.xiangrudz.com/up_pic/XR0650-101M.pdf
+Individual LCSC product links are recorded in buck_converter_bom.csv.
+Availability is a lookup snapshot, not a stock reservation.
+
+Verification
+KiCad loaded the updated board (44 footprints) and exported all three schematic
+sheets. Six expected buck net groups and all 10 PCB component pad/net mappings
+were checked against the schematic netlist. Unrelated non-ground routing was
+verified unchanged. Supply-sheet ERC has no errors and one intentional warning
+for the joined GND/-BATT names; whole-project ERC still has 31 findings
+(18 errors, 13 warnings), mostly outside this change. PCB DRC still aborts in
+the installed KiCad build, so no successful DRC result is claimed.

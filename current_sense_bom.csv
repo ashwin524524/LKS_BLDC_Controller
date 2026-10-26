@@ -1,0 +1,4 @@
+References,Quantity,Value,Manufacturer,MPN,LCSC,URL
+R16 R17,2,1mOhm 1% 3W 2512,Milliohm,HoJLR2512-3W-1mR-1%,C2903470,https://www.lcsc.com/product-detail/C2903470.html
+R18 R19 R20 R21,4,100Ohm 1% 0603,UNI-ROYAL,0603WAF1000T5E,C22775,https://www.lcsc.com/product-detail/C22775.html
+C10 C11,2,1nF 50V C0G 10% 0603,YAGEO,CC0603KRNPO9BN102,C3909020,https://www.lcsc.com/product-detail/C3909020.html

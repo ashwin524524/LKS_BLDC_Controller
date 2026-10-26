@@ -1,0 +1,3 @@
+References,Quantity,Value,Specification,Manufacturer,MPN,LCSC,Footprint,URL
+C2 C3 C4,3,4.7uF,50V X7R +/-10%,YAGEO,CC1206KKX7R9BB475,C132170,Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder,https://www.lcsc.com/product-detail/C132170.html
+R7 R8 R9 R10 R11 R12,6,10k,1% 62.5mW,UNI-ROYAL,0402WGF1002TCE,C25744,Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,https://www.lcsc.com/product-detail/C25744.html

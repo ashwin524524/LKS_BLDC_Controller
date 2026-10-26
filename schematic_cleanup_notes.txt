@@ -1,0 +1,28 @@
+ERC/library cleanup, 2026-10-25
+
+KiCad 10.0.4 ERC: 0 errors, 0 warnings with existing project check settings.
+No check severities or exclusions were changed to obtain this result.
+
+Changes:
+- Mark J1 pin 8 explicitly unused.
+- Add battery positive PWR_FLAG at T2 pin 1 to declare the external source.
+- Replace motor hierarchical aliases MOTA/B/C with global SHA/SHB/SHC.
+- Use -BATT consistently for the shared ground/negative return.
+- Remove three open-ended wire stubs above the bridge supply nodes.
+- Point T1/T2 symbols to project-local Custom library; terminal pins passive.
+- Point all obsolete Vesc_footprints assignments to Custom_footprints.
+- Remove obsolete Vesc_footprints entry from the project footprint table.
+- Save the actual placed T2/C1 land patterns as Battery_Wire_Pads_P10mm and
+  C_Radial_P5mm_AsRouted; these differ from older library versions.
+  Saved footprints preserve placed pad coordinates, sizes, drills and rotation.
+
+Validation:
+- Exported netlist comparison confirms all multi-pin physical component
+  connections are unchanged, including motor-terminal phase ordering.
+- PCB comparison confirms only three footprint library identifiers changed;
+  copper, pads, footprint positions and rotations are unchanged.
+- All assigned footprints resolve to existing project-local or bundled files.
+- All three schematic sheets and board copper/silkscreen/outline exported.
+
+This cleanup verifies schematic rules and library consistency. PCB routing,
+placement of the staged filter capacitors, and final DRC remain to be done.

@@ -1,0 +1,53 @@
+Bootstrap capacitors and gate pulldowns — 2026-10-25
+
+Selected parts
+C2/C3/C4: YAGEO CC1206KKX7R9BB475, LCSC C132170.
+4.7 uF, 50 V, X7R, +/-10%, 1206. The voltage rating applies across
+VB-VS (approximately the 12 V gate supply), not to VB relative to ground.
+R7/R8/R9/R10/R11/R12: UNI-ROYAL 0402WGF1002TCE, LCSC C25744.
+10 kohm, +/-1%, 62.5 mW, 0402. Retains the existing resistor packages.
+R7/R8 changed from 100 kohm; R9-R12 changed from 100 ohm.
+All six are gate-to-source pulldowns, including floating high-side sources.
+
+Sizing basis and assumptions
+IRLZ44N datasheet gives up to 48 nC total gate charge at Vgs=5 V,
+Vds=44 V and Id=25 A. This is NOT the gate charge at our ~12 V drive.
+Allow 100 nC per turn-on as a preliminary design budget at the higher drive.
+A 10 kohm pulldown draws 1.2 mA at Vgs=12 V and dissipates 14.4 mW.
+Allow another 0.2 mA for high-side driver current and leakage in the estimate.
+Use C_effective=2 uF as a conservative design assumption for tolerance,
+DC bias and temperature, rather than treating nominal 4.7 uF as guaranteed.
+This effective-capacitance assumption has not been verified against a
+part-specific DC-bias curve and must be checked during hardware validation.
+Estimated droop = (100 nC + 1.4 mA * high-side on-time) / C_effective:
+  50 us: 0.085 V; 1 ms: 0.75 V.
+These are engineering estimates under the stated assumptions, not guaranteed
+limits or a simulation. Longer uninterrupted high-side on-times require
+re-evaluation; bootstrap operation cannot support indefinite 100% duty.
+Firmware must precharge the bootstraps and provide adequate refresh time.
+Verify VBS at minimum supply, maximum duty, temperature and motor load.
+
+Why 4.7 uF
+A 4.7 uF ceramic provides ample charge margin for normal PWM operation with
+the corrected 10 kohm pulldowns, while fitting a practical local 1206 package.
+The older LKS reference diagram illustrates 47 uF/25 V; that is an example
+application value, not a minimum established for this particular MOSFET/PWM.
+The 50 V rating and larger 1206 body help with derating margin; nominal voltage
+rating alone does not guarantee a particular effective capacitance.
+
+Layout status
+VB-to-VS wiring is unchanged from the previous bootstrap correction.
+Updated schematic fields, nine PCB component records, and all three capacitor
+footprints. Original component centers/orientations retained provisionally.
+Removed five old track/via objects touching capacitor pads whose positions
+changed. Placement, capacitor clearances, and bootstrap routing need review.
+Place each capacitor immediately beside its own VB/VS pins with short loops.
+No change to the series gate resistors, MOSFET selection, or firmware.
+
+Sources
+https://www.lcsc.com/product-detail/C132170.html
+https://www.lcsc.com/product-detail/C25744.html
+https://www.infineon.com/assets/row/public/documents/24/49/infineon-irlz44n-datasheet-en.pdf
+https://atta.szlcsc.com/upload/public/pdf/source/20221020/6287CA62AED952FCAC8F703A555C9560.pdf
+
+Ordering quantities and footprint assignments are in gate_drive_bom.csv.

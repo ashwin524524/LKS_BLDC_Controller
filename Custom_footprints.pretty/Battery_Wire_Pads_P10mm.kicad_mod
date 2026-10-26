@@ -1,0 +1,73 @@
+(footprint "Battery_Wire_Pads_P10mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0.0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c26f593b-e5f4-4a60-a015-f187d053301a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1))))
+	(property "Value" "Battery_Wire_Pads_P10mm"
+		(at 0 1 0.0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7430a085-5d24-43a7-9ed1-aa08556dfa45")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15))))
+	(property "Datasheet" ""
+		(at 0 0 0.0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "458235c0-b4a2-44be-b769-b75e8652b9ea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15))))
+	(property "Description" ""
+		(at 0 0 0.0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "df5cd586-fc72-4cb6-ac83-6043a26bdd46")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15))))
+	(units
+		(unit
+			(name "A")
+			(pins "1" "2")))
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 270)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "b0fb4245-8104-4489-aadf-9d43cb1d1d7c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15))))
+	(pad "1" thru_hole roundrect
+		(at -5 0 0.0)
+		(size 5 6)
+		(drill 3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.1666666667)
+		(thermal_bridge_angle 45))
+	(pad "2" thru_hole roundrect
+		(at 5 0 0.0)
+		(size 5 6)
+		(drill 3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.1666666667)
+		(thermal_bridge_angle 45)))
